@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="Big5" ?>
+<odoo>
+    <data>
+        <record id="grievance_dashboard_action_view" model="ir.actions.act_window">
+            <field name="name">Grievance: Dashboard Action</field>
+            <field name="res_model">category</field>
+            <field name="view_mode">kanban</field>
+        </record>
+        <record id="grievance_kanban_view" model="ir.ui.view">
+            <field name="name">Grievance: Kanban View</field>
+            <field name="model">category</field>
+            <field name="arch" type="xml">
+                <kanban create="false" class="o_kanban_dashboard">
+                    <field name="name"/>
+                    <field name="first_level_ids"/>
+                    <field name="second_level_ids"/>
+                    <field name="is_random_assign"/>
+                    <field name="subcategory_ids"/>
+                      <templates>
+                        <t t-name="kanban-box">
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+
+                                    <div>
+                                        <table style="width: 100%">
+                                            <thead style="">
+                                                <tr>
+                                                    <th colspan="2">
+                                                        <div class="o_primary">
+                                                            <div style="padding-left:100px;">
+                                                                <h3><t t-esc="record.name.value"/></h3>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <hr/>
+                                                        <div style="margin-left:25%;">
+                                                            <h5 style="color:red;">GRIEVANCE CATEGORY</h5>
+                                                        </div>
+
+                                                        <hr/>
+                                                    </th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="margin-top:25px;">
+                                                        <div>
+                                                            <div style="margin-top:5px;" >
+                                                                <button id="open_ticket_btn" class="btn btn-primary" name="%(grievance_dashboard_action_view)d" type="action"><field name="todo_open_ticket_count"/> Open Ticket</button>
+                                                            </div>
+                                                            <div style="margin-top:5px;">
+                                                                <button id="oh_ticket_btn"  class="btn btn-primary" name="%(grievance_dashboard_action_view)d" type="action"><field name="todo_on_hold_ticket_count"/> On Hold</button>
+                                                            </div>
+                                                            <div style="margin-top:5px;">
+                                                                <button id="ip_ticket_btn" class="btn btn-primary" name="%(grievance_dashboard_action_view)d" type="action"><field name="todo_in_progress_ticket_count"/>
+                                                                    In Progress</button>
+                                                            </div>
+                                                            <div style="margin-top:5px;">
+                                                                <button id="complete_ticket_btn" class="btn btn-primary" name="%(grievance_dashboard_action_view)d" type="action"><field name="todo_completed_ticket_count"/> Completed</button>
+                                                            </div>
+                                                            <div style="margin-top:5px;">
+                                                                <button id="reject_ticket_btn" class="btn btn-primary" name="%(grievance_dashboard_action_view)d" type="action"><field name="todo_rejected_ticket_count"/> Rejected</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div>
+                                                            <div style="margin-top:5px;">
+                                                                <a name="%(grievance_action)d" type="action">
+                                                                    Unassigned
+
+                                                                </a>
+                                                                <a type="open"><field name="unassigned_ticket_count"/></a>
+                                                            </div>
+                                                            
+                                                            <div style="margin-top:5px;">
+                                                                <a name="%(grievance_action)d" type="action">
+                                                                    assigned
+                                                                </a>
+                                                                <a type="open"><field name="assigned_ticket_count"/></a>
+                                                            </div>
+                                                           
+                                                            <div style="margin-top:5px;">
+                                                                <a name="%(grievance_action)d" type="action">
+                                                                    Closed
+                                                                </a>
+                                                                <a type="open"><field name="todo_completed_ticket_count"/></a>
+                                                                
+                                                            </div>
+                                                            
+                                                            <div style="margin-top:5px;">
+                                                                <a name="%(grievance_action)d" type="action">
+                                                                    High Priority
+                                                                </a>
+                                                                <a type="open"><field name="priory_ticket_count"/></a>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                       
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

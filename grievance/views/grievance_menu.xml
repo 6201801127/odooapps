@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+<!--        Grievance action-->
+        <record id="grievance_action" model="ir.actions.act_window">
+            <field name="name">Grievance: Action</field>
+            <field name="res_model">grievance</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+<!--        category Action-->
+        <record id="category_action" model="ir.actions.act_window">
+            <field name="name">Grievance: Category Action</field>
+            <field name="res_model">category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--        Subcategory Action-->
+        <record id="subcategory_action" model="ir.actions.act_window">
+            <field name="name">Grievance: SubCategory Action</field>
+            <field name="res_model">subcategory</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+<!--        stage action-->
+        <record id="stage_action" model="ir.actions.act_window">
+            <field name="name">Grievance: Stage Action</field>
+            <field name="res_model">stage</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+<!--        Grievance menu-->
+
+        <menuitem
+            id="grievance_menu_root"
+            name="Grievance"
+            web_icon="grievance,static/description/icon.png"
+            sequence="1"/>
+        <menuitem id="grievance_dashboard"
+                  name="Dashboard"
+                  parent="grievance_menu_root"
+                  action="grievance_dashboard_action_view"
+                  sequence="2"/>
+        <menuitem id="grievance_sub_menu"
+            name="Grievance"
+            parent="grievance_menu_root"
+            sequence="3"/>
+        <menuitem id="grievance_sub_ticket_menu"
+            name="Raise grievance"
+            parent="grievance_sub_menu"
+            action="grievance.grievance_action"
+            sequence="4"/>
+        <menuitem id="grievance_report_menu"
+                  name="Report"
+                  parent="grievance_menu_root"
+                  sequence="5"/>
+        <menuitem id="grievance_configuration_menu"
+                  name="Configuration"
+                  parent="grievance_menu_root"
+                  sequence="6"/>
+        <menuitem id="grievance_setting_menu"
+                  name="Settings"
+                  parent="grievance_configuration_menu"
+                  action="category_action"
+                  sequence="7"/>
+    </data>
+    
+
+</odoo>

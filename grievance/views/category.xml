@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="Big5" ?>
+<odoo>
+    <data>
+        <record id="category_view_form" model="ir.ui.view">
+            <field name="name">Grievance: Category View Form</field>
+            <field name="model">category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="first_level_ids" widget="many2many_tags"/>
+                            <field name="second_level_ids" widget="many2many_tags"/>
+                            <field name="is_random_assign"/>
+                            <field name="subcategory_ids" widget="many2many_tags"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="category_view_tree" model="ir.ui.view">
+            <field name="name">Grievance: Category View Tree</field>
+            <field name="model">category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="todo_open_ticket_count"/>
+                    <field name="todo_in_progress_ticket_count"/>
+                    <field name="todo_on_hold_ticket_count"/>
+                    <field name="todo_completed_ticket_count"/>
+                    <field name="todo_rejected_ticket_count"/>
+                    <field name="assigned_ticket_count"/>
+                    <field name="unassigned_ticket_count"/>
+                    <field name="priory_ticket_count"/>
+                    <field name="is_random_assign"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

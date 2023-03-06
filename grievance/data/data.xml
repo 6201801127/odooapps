@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="Big5" ?>
+<odoo>
+    <data>
+        <record id="stage_draft_demo_data" model="stage">
+            <field name="name">Draft</field>
+            <field name="code">D</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="stage_new_demo_data" model="stage">
+            <field name="name">New</field>
+            <field name="code">N</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="stage_inprogress_demo_data" model="stage">
+            <field name="name">InProgress</field>
+            <field name="code">IP</field>
+            <field name="sequence">3</field>
+        </record>
+        <record id="stage_hold_demo_data" model="stage">
+            <field name="name">Hold</field>
+            <field name="code">H</field>
+            <field name="sequence">4</field>
+        </record>
+        <record id="stage_closed_demo_data" model="stage">
+            <field name="name">Closed</field>
+            <field name="code">C</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="stage_reject_demo_data" model="stage">
+            <field name="name">Rejected</field>
+            <field name="code">R</field>
+            <field name="sequence">6</field>
+        </record>
+    </data>
+</odoo>

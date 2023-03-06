@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_grievance_management,grievance_management,model_grievance,base.group_user,1,1,1,1
+access_grievance_category,grievance_category,model_category,base.group_user,1,1,1,1
+access_grievance_stage,grievance_stage,model_stage,base.group_user,1,1,1,1
+access_grievance_subcategory,grievance_subcategory,model_subcategory,base.group_user,1,1,1,1
+access_grievance_forward_wizard,grievance_forward_wizard,model_forward_grievance_wizard,base.group_user,1,1,1,1
+

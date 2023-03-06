@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="forward_grievance_wizard_action" model="ir.actions.act_window">
+        <field name="name">Grievance: Forward Action Wizard</field>
+        <field name="res_model">forward.grievance.wizard</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="forward_grievance_wizard_view_form" model="ir.ui.view">
+        <field name="name">Grievance: Forward Wizard Form</field>
+        <field name="model">forward.grievance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Grievance Forward Wizard form">
+                <header>
+                    
+                </header>
+                <sheet>
+                    <group>
+                        <field name="category_id" />
+                        <field name="Cat_assign_member" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button id="gire_forward_btn" name="forward_grievance_object_call" string="Forward" class="btn-primary" type="object"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="forward_grievance_wizard_view_tree" model="ir.ui.view">
+        <field name="name">Grievance: Forward Wizard Tree</field>
+        <field name="model">forward.grievance.wizard</field>
+        <field name="arch" type="xml">
+            <tree string="Grievance Forward Wizard Tree">
+                <field name="category_id" />
+                <field name="Cat_assign_member" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

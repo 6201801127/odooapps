@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="Big5" ?>
+<odoo>
+    <data>
+<!--        Sub Category view form-->
+        <record id="subcategory_view_form" model="ir.ui.view">
+            <field name="name">Grievance: SubCategory View Form</field>
+            <field name="model">subcategory</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--        Sub Category view tree-->
+        <record id="subcategory_view_form" model="ir.ui.view">
+            <field name="name">Grievance: Sub Category View Tree</field>
+            <field name="model">subcategory</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

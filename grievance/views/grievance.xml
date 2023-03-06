@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- grievance main model form view  -->
+        <record id="grievance_view_form" model="ir.ui.view">
+            <field name="name">Grievance view form</field>
+            <field name="model">grievance</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <!-- <script>
+                        $('textarea[name="description"]').on("input", function() {
+                            $('#dsc').show()
+                            var currentLength = $(this).val().length;
+                            $('textarea[name="description"]').attr('maxlength',500);
+                            var textlen = 500 - $(this).val().length;
+                            $('#dsc').text(textlen + " Left");
+                          });
+
+                        $('#dsc').text() == '500 Left'?$('#dsc').hide():$('#dsc').show()
+
+                    </script> -->
+                    <header>
+                        <button id="raise_grievance_id" name="raise_grievance_action_call" type="object" string="Raise Grievance" class="btn-primary" attrs="{'invisible':[('code','!=','D')]}"/>
+                        <button id="accept_grievance_id" name="accept_grievance_action_call" type="object" string="Accept Grievance" class="btn-success" attrs="{'invisible':[('code','!=','N')]}" />
+                        <button id="forward_grievance" name="forward_grievance_method_call" string="Forward Grievance" type="object" class="btn-primary"/>
+                        <button id="hold_grievance_id" name="hold_grievance_action_call" type="object" string="Hold Grievance" class="btn-primary" attrs="{'invisible':[('code','!=','IP')]}" />
+                        <button id="inprogress_grievance_id" name="inprogress_grievance_action_call" type="object" string="InProgress Grievance" class="btn-primary" attrs="{'invisible':[('code','!=','H')]}" />
+                        <button id="close_grievance_id" name="close_grievance_action_call" type="object" string="Close Grievance" class="btn-primary" attrs="{'invisible':[('code','!=','IP')]}" />
+                        <button id="reject_grievance_id" name="reject_grievance_action_call" type="object" string="Reject Grievance" class="btn-danger" attrs="{'invisible':[('code','!=','N')]}"/>
+                        <button id="assign_spoc_id" name="assign_spoc_action_call" type="object" string="Assign SPOC" class="btn-primary" attrs="{'invisible':[('code','!=','N')]}"/>
+                        <field name="stage_id" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                            <field name="category_id" />
+                            <field name="sub_category_id" />
+                            <field name="priority" widget="priority"/>
+                            <field name="team_id"/>
+                            <field name="team_member_id" attrs="{'invisible':[('team_member_id','=',False)]}"/>
+                            <label for='description' required="1"/>
+                            <div>
+                                <field name="description"/>
+                                <p id="dsc"></p>
+                                <field name="word_limit" invisible="1"/>
+                            </div>
+                            
+                            <field name="code" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="emp_name_id" />
+                                <field name="emp_department"/>
+                                <field name="emp_designation" />
+                                <field name="emp_email" widget="email"/>
+                                <field name="phone" widget="phone"/>
+                                <field name="url_attach" widget="url"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- grievance main model tree view  -->
+        <record id="grievance_view_tree" model="ir.ui.view">
+            <field name="name">Grievance view tree</field>
+            <field name="model">grievance</field>
+            <field name="arch" type="xml">
+                <tree  decoration-warning="priority=='1'" string="Grievance Tree">
+                    <field name="category_id" />
+                    <field name="sub_category_id" />
+                    <field name="priority" widget="priority"/>
+                    <field name="team_id"/>
+                    <field name="team_member_id"/>
+                    <field name="description" />
+                    <field name="emp_name_id" />
+                    <field name="emp_department"/>
+                    <field name="emp_designation" />
+                    <field name="emp_email" optional="show"/>
+                    <field name="stage_id" decoration-warning="code == 'IP'"
+                    decoration-success="code == 'C'" 
+                    decoration-info="code not in ('IP', 'C', 'R')" widget="badge" optional="show"/>
+                    <field name="code" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+       
+        <!-- grievance kanban view  -->
+        <record id="grievance_view_kanban" model="ir.ui.view">
+            <field name="name">Grievance.view.kanban</field>
+            <field name="model">grievance</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id">
+                    <field name="category_id" />
+                    <field name="sub_category_id" />
+                    <field name="priority" widget="priority"/>
+                    <field name="description" />
+                    <field name="emp_name_id" />
+                    <field name="emp_department"/>
+                    <field name="emp_designation" />
+                    <field name="emp_email" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div><h3><t t-esc="record.category_id.value"/></h3></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    
+    
+    </data>
+    
+
+</odoo>
